@@ -145,7 +145,15 @@ public:
   }
 
   void widen_with(const IntervalDomain& other) override {
+    std::cout << "IntervalDomain this inv: ";
+    this->_inv.dump(std::cout);
+    std::cout << std::endl;
+    std::cout << "IntervalDomain other inv: ";
+    other._inv.dump(std::cout);
     this->_inv.widen_with(other._inv);
+    std::cout << "IntervalDomain after widen this inv: ";
+    this->_inv.dump(std::cout);
+    std::cout << std::endl;
   }
 
   void widen_threshold_with(const IntervalDomain& other,

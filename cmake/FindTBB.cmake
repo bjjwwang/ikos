@@ -108,7 +108,8 @@ if(NOT TBB_FOUND)
   ##################################
 
   # Define search paths based on user input and environment variables
-  set(TBB_ROOT "" CACHE PATH "Path to tbb install directory")
+  set(TBB_ROOT /usr/local/opt/tbb@2020/)
+  set(TBB_INCLUDE_DIRS  /usr/local/opt/tbb@2020/include/)
   set(TBB_SEARCH_DIR ${TBB_ROOT} $ENV{TBB_INSTALL} $ENV{TBBROOT})
 
   # Define the search directories based on the current platform

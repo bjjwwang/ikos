@@ -61,6 +61,8 @@
 #include "function.hpp"
 #include "type.hpp"
 
+#include <iostream>
+
 namespace ikos {
 namespace frontend {
 namespace import {
@@ -2543,6 +2545,11 @@ void BasicBlockTranslation::add_conditional_branching(
 
     for (auto& output : this->outputs) {
       ar::BasicBlock* bb = output.block;
+//      for (ar::Statement* stmt : *bb) {
+//        stmt->dump(std::cout);
+//        std::cout << std::endl;
+//      }
+//      std::cout << std::endl;
       auto assign = ar::cast< ar::Assignment >(bb->back());
       auto cst = ar::cast< ar::IntegerConstant >(assign->operand());
 

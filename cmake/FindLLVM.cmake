@@ -39,7 +39,7 @@
 # UNILATERAL TERMINATION OF THIS AGREEMENT.
 #
 ###############################################################################
-
+set(LLVM_CONFIG_EXECUTABLE /usr/local/opt/llvm@9/bin/llvm-config)
 if (NOT LLVM_FOUND)
   find_program(LLVM_CONFIG_EXECUTABLE CACHE NAMES llvm-config DOC "Path to llvm-config binary")
 

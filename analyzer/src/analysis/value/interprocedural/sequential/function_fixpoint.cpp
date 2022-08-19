@@ -257,7 +257,7 @@ AbstractDomain FunctionFixpoint::analyze_node(ar::BasicBlock* bb,
     if (_ctx.opts.trace_ar_statements) {
       auto msg = analyzer::log::msg();
       auto& stream = msg.stream();
-      msg << "Processing: ";
+      msg << "FWD FixPoint Processing: ";
       stmt->dump(stream);
       stream << std::endl;
     }
@@ -332,7 +332,15 @@ void FunctionFixpoint::run_checks() {
   if (!this->_call_context->empty()) {
     this->_logger.start_callee(this->_call_context, this->_function);
   }
-
+  for (ar::BasicBlock* bb : *this->cfg()) {
+    auto msg = analyzer::log::msg();
+    auto& stream = msg.stream();
+    for (ar::Statement* stmt : *bb) {
+      stmt->dump(stream);
+      stream << std::endl;
+    }
+    stream << std::endl;
+  }
   for (ar::BasicBlock* bb : *this->cfg()) {
     NumericalExecutionEngineT
         exec_engine(this->pre(bb),
@@ -372,6 +380,13 @@ void FunctionFixpoint::run_checks() {
         msg << "Checking: ";
         stmt->dump(stream);
         stream << std::endl;
+        if (core::isa<ar::BinaryOperation>(stmt)) {
+          auto bi_stmt = core::dyn_cast<ar::BinaryOperation>(stmt);
+          if(bi_stmt->has_result()) {
+            auto res = bi_stmt->result();
+            res->dump(stream);
+          }
+        }
       }
 
       // Check the statement if it's related to an llvm instruction

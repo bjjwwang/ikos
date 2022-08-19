@@ -717,6 +717,7 @@ def clang(
 
     log.info('Compiling %s' % cpp_path)
     log.debug('Running %s' % command_string(cmd))
+    log.info("llvm cmd: %s" % cmd)
     subprocess.check_call(cmd)
 
 

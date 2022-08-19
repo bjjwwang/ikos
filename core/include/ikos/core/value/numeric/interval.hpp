@@ -51,7 +51,7 @@
 
 #include <boost/optional.hpp>
 
-#include <ikos/core/domain/abstract_domain.hpp>
+#include <ikos/core/domain/abstract_domain.hpp> //
 #include <ikos/core/linear_constraint.hpp>
 #include <ikos/core/number.hpp>
 #include <ikos/core/number/bound.hpp>

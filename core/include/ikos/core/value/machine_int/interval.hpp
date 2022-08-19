@@ -275,8 +275,9 @@ public:
     } else if (other.is_bottom()) {
       return other;
     } else {
-      return Interval(this->_lb.is_min() ? other._lb : this->_lb,
+      auto a =  Interval(this->_lb.is_min() ? other._lb : this->_lb,
                       this->_ub.is_max() ? other._ub : this->_ub);
+      return a;
     }
   }
 

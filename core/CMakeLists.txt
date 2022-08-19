@@ -49,7 +49,6 @@ project(ikos-core)
 #
 # Build settings
 #
-
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
   message(FATAL_ERROR
     "In-source builds are not allowed. Please clean your source tree and try again.")
@@ -92,6 +91,7 @@ include_directories(SYSTEM ${GMP_INCLUDE_DIR})
 include_directories(SYSTEM ${GMPXX_INCLUDE_DIR})
 
 find_package(TBB 2 REQUIRED)
+#set(TBB_INCLUDE_DIRS  /usr/local/include/tbb)
 include_directories(SYSTEM ${TBB_INCLUDE_DIRS})
 
 find_package(APRON)
